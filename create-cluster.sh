@@ -23,8 +23,12 @@ for ip in $ips; do
     echo "Registering membership for $ip"
 
     curl -X PUT http://$user:$password@$firstIp:$localPort/_nodes/couchdb@$ip -d {}
-
+    
   fi
+
+  echo "Setting [couch_peruser] enable=true"
+   
+  curl -X PUT http://$user:$password@$ip:$localPort/_node/couchdb@$ip/_config/couch_peruser/enable -d 'true'
 
 done
 
