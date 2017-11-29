@@ -34,6 +34,10 @@ for ip in $ips; do
    
   curl -X PUT http://$user:$password@$ip:$localPort/_node/couchdb@$ip/_config/couch_httpd_auth/timeout -d '1440'
 
+  echo "Allow cookies to save across browser restarts [couch_httpd_auth] allow_persistent_cookies=true "
+   
+  curl -X PUT http://$user:$password@$ip:$localPort/_node/couchdb@$ip/_config/couch_httpd_auth/allow_persistent_cookies -d 'true'
+
 done
 
 # Create system DBs
