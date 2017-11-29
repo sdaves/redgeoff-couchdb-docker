@@ -28,15 +28,15 @@ for ip in $ips; do
 
   echo "Enabling per user databases [couch_peruser] enable=true"
    
-  curl -X PUT http://$user:$password@$ip:$localPort/_node/couchdb@$ip/_config/couch_peruser/enable -d 'true'
+  curl -X PUT http://$user:$password@$firstIp:$localPort/_node/couchdb@$ip/_config/couch_peruser/enable -d 'true'
 
   echo "Extending cookie timeout to one day [couch_httpd_auth] timeout=86400 "
    
-  curl -X PUT http://$user:$password@$ip:$localPort/_node/couchdb@$ip/_config/couch_httpd_auth/timeout -d '86400'
+  curl -X PUT http://$user:$password@$firstIp:$localPort/_node/couchdb@$ip/_config/couch_httpd_auth/timeout -d '86400'
 
   echo "Allow cookies to save across browser restarts [couch_httpd_auth] allow_persistent_cookies=true "
    
-  curl -X PUT http://$user:$password@$ip:$localPort/_node/couchdb@$ip/_config/couch_httpd_auth/allow_persistent_cookies -d 'true'
+  curl -X PUT http://$user:$password@$firstIp:$localPort/_node/couchdb@$ip/_config/couch_httpd_auth/allow_persistent_cookies -d 'true'
 
 done
 
