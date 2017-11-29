@@ -30,9 +30,9 @@ for ip in $ips; do
    
   curl -X PUT http://$user:$password@$ip:$localPort/_node/couchdb@$ip/_config/couch_peruser/enable -d 'true'
 
-  echo "Extending cookie timeout to one day [couch_httpd_auth] timeout=1440 "
+  echo "Extending cookie timeout to one day [couch_httpd_auth] timeout=86400 "
    
-  curl -X PUT http://$user:$password@$ip:$localPort/_node/couchdb@$ip/_config/couch_httpd_auth/timeout -d '1440'
+  curl -X PUT http://$user:$password@$ip:$localPort/_node/couchdb@$ip/_config/couch_httpd_auth/timeout -d '86400'
 
   echo "Allow cookies to save across browser restarts [couch_httpd_auth] allow_persistent_cookies=true "
    
