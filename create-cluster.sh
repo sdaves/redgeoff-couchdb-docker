@@ -27,6 +27,7 @@ for ip in $ips; do
   fi
 
   echo "Enabling per user databases [couch_peruser] enable=true"
+  
   curl -X PUT http://$user:$password@$ip:$port/_node/_local/_config/couch_peruser/enable -d 'true'
 
   echo "Extending cookie timeout to one day [couch_httpd_auth] timeout=86400 "
